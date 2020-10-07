@@ -11,7 +11,6 @@ function Pacman(){
     this.left = false;
     this.right = true;
     
-  
     this.display = function() {
       fill(200, 200, 0);
       noStroke();
