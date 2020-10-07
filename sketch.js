@@ -18,10 +18,10 @@ function setup() {
   t[8] = new Terrain(15, 2, 2, 1);
   // 2. Reihe
   t[9] = new Terrain(2, 4, 1, 2);
-  t[10] = new Terrain(15, 2, 1, 2);
-  t[11] = new Terrain(15, 2, 2, 1);
-  t[12] = new Terrain(15, 2, 2, 1);
-  t[13] = new Terrain(15, 2, 2, 1);
+  t[10] = new Terrain(15, 4, 2, 2);
+  t[11] = new Terrain(7, 4, 5, 1);
+  t[12] = new Terrain(13, 4, 1, 4);
+  t[13] = new Terrain(5, 4, 1, 4);
    // Unterste Reihe
   t[14] = new Terrain(2, 16, 2, 1);
   t[15] = new Terrain(5, 16, 3, 1);
