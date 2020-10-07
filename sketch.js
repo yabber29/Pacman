@@ -17,7 +17,7 @@ function setup() {
   t[7] = new Terrain(11, 2, 3, 1);
   t[8] = new Terrain(15, 2, 2, 1);
   // 2. Reihe
-  t[9] = new Terrain(2, 4, 1, 2);
+  t[9] = new Terrain(2, 4, 2, 2);
   t[10] = new Terrain(15, 4, 2, 2);
   t[11] = new Terrain(7, 4, 5, 1);
   t[12] = new Terrain(13, 4, 1, 4);
@@ -43,17 +43,16 @@ function setup() {
    // Gespengster Box
   t[29] = new Terrain(7, 7, 1, 5);
   t[30] = new Terrain(11, 7, 1, 5);
-  t[31] = new Terrain(8, 11, 1, 1);
-  t[32] = new Terrain(10, 11, 1, 1);
-  t[33] = new Terrain(8, 7, 1, 1);
-  t[34] = new Terrain(10, 7, 1, 1);
+  t[31] = new Terrain(8, 11, 3, 1);
+  t[32] = new Terrain(8, 7, 1, 1);
+  t[33] = new Terrain(10, 7, 1, 1)
 }
 
 function draw() {
   background(42);
   p.display();
   p.mouthmovement();
-  p.move();
+  p.move();   
   
   for (var i = 0; i < t.length; i++){
     t[i].show();
