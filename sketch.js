@@ -5,6 +5,7 @@ var t = []
 function setup() {
   createCanvas(windowHeight-20, windowHeight-20);
   scl = height/19;
+  frameRate(8);
   p = new Pacman();
   // 1. Reihe
   t[0] = new Terrain(0, 0, 19, 1);
@@ -45,7 +46,7 @@ function setup() {
   t[30] = new Terrain(11, 7, 1, 5);
   t[31] = new Terrain(8, 11, 3, 1);
   t[32] = new Terrain(8, 7, 1, 1);
-  t[33] = new Terrain(10, 7, 1, 1)
+  t[33] = new Terrain(10, 7, 1, 1);
 }
 
 function draw() {
@@ -97,3 +98,4 @@ function keyPressed () {
     p.ydir = 0;
   }
 }
+
