@@ -1,8 +1,8 @@
 function Pacman() {
-  this.x = width / 2;
-  this.y = height / 2;
-  this.d = scl * 0.8;
-  this.xdir = scl;// / 20;
+  this.x = scl * 10;
+  this.y = scl * 10;
+  this.d = scl * 0.5;
+  this.xdir = 0;
   this.ydir = 0;
   this.mouthangle = 10;
   this.mouthchange = 3;
@@ -13,8 +13,10 @@ function Pacman() {
 
   this.display = function() {
     fill(200, 200, 0);
+    strokeWeight(2);
+    stroke(0);
+    ellipse(this.x - this.d, this.y- this.d, this.d, this.d);
     noStroke();
-    ellipse(this.x, this.y, this.d, this.d);
     fill(42);
     if (p.right) {
       triangle(this.x, this.y,
@@ -55,40 +57,30 @@ function Pacman() {
 
   this.move = function() {
     var pacX, pacY;
-    var schild = 0.5;
+    var schild = 0.51;
     this.x += this.xdir;
     this.y += this.ydir;
     var collision = false;
     if (this.ydir > 0) {
-      pacX = this.y + this.d * schild;
+      pacY = this.y + this.d * schild;
     } else {
-      pacX = this.y - this.d * schild;
+      pacY = this.y - this.d * schild;
     }
     if (this.xdir > 0) {
       pacX = this.x + this.d * schild;
     } else {
       pacX = this.x - this.d * schild;
     }
-    if (this.xdir > 0) {
-      pacY = this.x + this.d * schild;
-    } else {
-      pacY = this.x - this.d * schild;
-    }
-    if (this.ydir > 0){
-      pacY = this.y + this.d * schild;
-    } else {
-      pacY = this.y - this.d * schild;
-    }
     
     //console.log(this.x + "," + this.y);
     for (let i = 0; i < t.length; i++) {
       var wall = t[i];
-      //console.log(wall.x + "," + wall.y + "/" + (wall.x + wall.w) + "," + (wall.y + wall.h));
+      //console.log(pacX + ";" + pacY + " --- " + wall.x + "," + wall.y + "/" + (wall.x + wall.w) + "," + (wall.y + wall.h));
       if (
-           (pacX >= wall.x - scl*0.5) &&
-           (pacX <= (wall.x + wall.w- scl*0.5)) &&
-           (pacY >= wall.y- scl*0.5) &&
-           (pacY <= (wall.y + wall.h- scl*0.5))
+           (pacX > wall.x) &&
+           (pacX < ((wall.x-1) + wall.w)) &&
+           (pacY > wall.y) &&
+           (pacY < ((wall.y - 1) + wall.h))
         ) {
         //console.log("XXXXX + YYYYYY");
         collision = true;
