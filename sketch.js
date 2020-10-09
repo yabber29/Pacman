@@ -1,7 +1,8 @@
 function Pacman() {
-  this.x = scl * 10;
-  this.y = scl * 12;
+  this.x = scl * 1;
+  this.y = scl * 1;
   this.d = scl * 0.5;
+  this.adjustement = scl;
   this.xdir = 0;
   this.ydir = 0;
   this.mouthangle = 10;
@@ -15,7 +16,7 @@ function Pacman() {
     fill(200, 200, 0);
     strokeWeight(2);
     stroke(0);
-    ellipse(this.x - this.d, this.y- this.d, this.d, this.d);
+    ellipse(this.x + this.d, this.y + this.d, this.d, this.d);
     noStroke();
     fill(42);
     if (p.right) {
@@ -57,38 +58,38 @@ function Pacman() {
 
   this.move = function() {
     var pacX, pacY;
-    var schild = 0.51;
-    this.x += this.xdir;
-    this.y += this.ydir;
+    //var schild =0;
+    this.x += this.xdir * scl;// - this.adjustement;
+    this.y += this.ydir * scl;// - this.adjustement;
     var collision = false;
     if (this.ydir > 0) {
-      pacY = this.y + this.d * schild;
+      pacY = scl + this.y + this.d;// * schild;
     } else {
-      pacY = this.y - this.d * schild;
+      pacY = scl + this.y - this.d;// * schild;
     }
     if (this.xdir > 0) {
-      pacX = this.x + this.d * schild;
+      pacX = scl + this.x + this.d;// * schild;
     } else {
-      pacX = this.x - this.d * schild;
+      pacX = scl + this.x - this.d;// * schild;
     }
     
     //console.log(this.x + "," + this.y);
     for (let i = 0; i < t.length; i++) {
       var wall = t[i];
-      //console.log(pacX + ";" + pacY + " --- " + wall.x + "," + wall.y + "/" + (wall.x + wall.w) + "," + (wall.y + wall.h));
       if (
            (pacX > wall.x) &&
-           (pacX < ((wall.x-1) + wall.w)) &&
+           (pacX < ((wall.x) + wall.w)) &&
            (pacY > wall.y) &&
-           (pacY < ((wall.y - 1) + wall.h))
+           (pacY < ((wall.y) + wall.h))
         ) {
-        //console.log("XXXXX + YYYYYY");
+        console.log(scl + ":" + pacX + ";" + pacY + " --- " + wall.x + "," + wall.y + "/" + (wall.x + wall.w) + "," + (wall.y + wall.h));
+        console.log("Collision with wall " + i);
         collision = true;
       }
     }
     if (collision) {
-      this.x -= this.xdir;
-      this.y -= this.ydir;
+      this.x -= this.xdir * scl;// + this.adjustement;
+      this.y -= this.ydir * scl;// + this.adjustement;
     }
 
   }
